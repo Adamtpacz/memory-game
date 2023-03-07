@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    font-size: 32px;
+    padding: 1vmin;
+}
+
+#game {
+    display: flex;
+    align-items: center;
+    margin: 2vmin;
+}
+
+#timer, #counter {
+    text-align: center;
+    margin: 2vmin;
+    padding: 1vmin;
+}
+
+h3 {
+    padding: 1vmin;
+}
+
+/* #timer > h3 {} */
+
+/* #counter > h3 {} */
+
+/* p {} */
+
+#timer > p, #counter > p {
+    padding: 1vmin;
+    border: 1px solid grey;
+}
+
+
+#board {
+    display: grid;
+    width: 75vmin;
+    height: 75vmin;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin: 2vmin auto;
+    column-gap: 1vmin;
+    row-gap: 1vmin;
+}
+
+#board > div {
+    border-radius: 20%;
+    border: 1px solid grey;
+}
+
+/* #buttons {} */
+
+button {
+    margin: 1vmin;
+    padding: 1vmin;
+}
+
+/* button:hover {} */

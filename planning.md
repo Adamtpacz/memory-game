@@ -1,0 +1,37 @@
+1. Game chosen - Memory Game - High Fantasy Themed
+2. Wireframe: https://imgur.com/a/drrUb1Q
+3. High level pseudocode:
+- Define required constants
+  - Colors of the cards in the “turned over” state (checkered)
+  - Images of the 8 pairs present in the game
+- Define required variables used to track the state of the game
+  - Board
+  - Randomized pairs
+  - Time left
+  - Wrong guesses remaining
+- Store (cache) elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
+  - Store the 16 elements that will represent the “cards” on the page
+  - Store the "Start Game" button
+  - Store the "Restart Game" button
+- Upon loading the app should:
+  - Initialize the state variables
+    - Randomize the pair locations on the board
+  - Render those values to the page
+  - Wait for the user to click a “card”
+- Handle the player cicking the "Start Game" button
+  - Logic starting the timer once the "Start Game" button is clicked
+- Handle a player clicking a “card”
+- Handle a player clicking the “Restart Game” button
+- Handle the timer starting once a “card” has been clicked
+- Handle the “Wrong Guesses Remaining” counting down whenever the player chooses (clicks) a wrong guess
+- Logic controlling the game ending once the timer is up
+- Logic controlling the game ending once the player runs out of “wrong guesses”
+- Game loop:
+  - Player clicks “Start Game”
+  - Timer begins
+  - Player starts choosing cards in pairs on the board
+  - If chooses wrong pair, “Wrong Guesses Remaining” gets reduced by 1
+  - When wrong pair is chosen, choices are displayed for a certain amount of time and then go back to being hidden
+  - Once all pairs are matched up, player wins game
+  - Winning display message appears when players wins game
+  - Player can choose to restart game at any time

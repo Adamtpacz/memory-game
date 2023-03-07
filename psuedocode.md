@@ -15,6 +15,11 @@
   - Initialize the state variables
     - Randomize the pair locations on the board
   - Render those values to the page
+    - render()
+    - renderBoard()
+    - renderTimer()
+    - renderCounter()
+    - renderButtons()
   - Wait for the player to click the "Start Game" button
 - Handle the player cicking the "Start Game" button
   - Logic starting the timer once the "Start Game" button is clicked
@@ -26,7 +31,8 @@
   - Logic controlling the board state resetting (re-initializing)
 - Logic controlling the game ending once the timer is up
 - Logic controlling the game ending once the player runs out of “wrong guesses”
-- Game loop:
+
+###Game loop:
   - Game initializes
   - Player clicks “Start Game”
   - Timer begins

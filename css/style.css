@@ -59,6 +59,9 @@ h3 {
 #board > div {
     border-radius: 20%;
     border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* #buttons {} */

@@ -43,6 +43,9 @@ startBtn.addEventListener('click', function() {
         if (timerEl.innerHTML === "0:00") {
             return
         }
+        if (startBtn.style.visibility === "visible") {
+            return
+        }
         timerEl.innerHTML = `${timeMin}:${timeSec}`
         timeSec--
     }, 1000)
@@ -51,6 +54,8 @@ startBtn.addEventListener('click', function() {
 
 restartBtn.addEventListener('click', function() {
     init()
+    startBtn.style.visibility = "visible"
+    timerEl.innerText = "10:00"
 })
 
 /*----- functions -----*/
@@ -58,20 +63,20 @@ function init() {
     console.log('Initializing game')
 
     // Initial board state
-    // board = [
-    //     [null, null, null, null], // Column 0
-    //     [null, null, null, null], // Column 0
-    //     [null, null, null, null], // Column 0
-    //     [null, null, null, null], // Column 0
-        
-    // ]
-
     board = [
-        [tile(), tile(), tile(), tile()], // Column 0
-        [tile(), tile(), tile(), tile()], // Column 1
-        [tile(), tile(), tile(), tile()], // Column 2
-        [tile(), tile(), tile(), tile()], // Column 3
+        [0, 1, 2, 3], // Column 0
+        [4, 5, 6, 7], // Column 0
+        [0, 1, 2, 3], // Column 0
+        [4, 5, 6, 7], // Column 0
+        
     ]
+
+    // board = [
+    //     [tile(), tile(), tile(), tile()], // Column 0
+    //     [tile(), tile(), tile(), tile()], // Column 1
+    //     [tile(), tile(), tile(), tile()], // Column 2
+    //     [tile(), tile(), tile(), tile()], // Column 3
+    // ]
 
     // Randomized pairs
     pairs = null
@@ -99,13 +104,9 @@ function renderBoard() {
         colArr.forEach((tileVal, rowIdx) => {
             const tileId = `c${colIdx}r${rowIdx}`
             const tileEl = document.getElementById(tileId)
-            // tileEl.innerHTML = cards[tileVal]
             tileEl.innerHTML = `<img src="${cards[tileVal]}">`
         })
     })
-
-
-
 }
 
 function tile() {

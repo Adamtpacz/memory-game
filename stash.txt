@@ -1,3 +1,2 @@
 Stretch goals:
 - Wrong guesses functionality
-- Randomize tiles functionality

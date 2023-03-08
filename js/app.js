@@ -43,4 +43,31 @@ const restartBtn = document.getElementById('restart')
 
 
 /*----- functions -----*/
+function init() {
+    console.log('Initializing game')
 
+    // Initial board state
+    board = [
+        [0, 0, 0, 0], // Column 0
+        [0, 0, 0, 0], // Column 1
+        [0, 0, 0, 0], // Column 2
+        [0, 0, 0, 0]  // Column 3 
+    ]
+
+    // Randomized pairs
+    pairs = null
+
+    // Allowed time
+    time = null
+
+    // Allowed guesses
+    guesses = 24
+
+    render()
+}
+
+function render() {
+    console.log('Rendering game')
+}
+
+init()

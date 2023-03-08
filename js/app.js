@@ -43,6 +43,22 @@ const restartBtn = document.getElementById('restart')
 
 /*----- event listeners -----*/
 
+startBtn.addEventListener('click', function() {
+    setInterval(function() {
+        if (timeSec < 0) {
+            timeMin--
+            timeSec = 59
+        } else if (timeSec <= 9) {
+            timeSec = "0" + timeSec
+        }
+        if (timerEl.innerHTML === "0:00") {
+            return
+        }
+        timerEl.innerHTML = `${timeMin}:${timeSec}`
+        timeSec--
+    }, 1000)
+    startBtn.style.visibility = "hidden"
+})
 
 /*----- functions -----*/
 function init() {
@@ -81,39 +97,24 @@ function render() {
     console.log('Rendering game')
 
     renderBoard()
-    renderTimer()
 }
 
 function renderBoard() {
     console.log('Rendering board')
 
-    board.forEach((colArr, colIdx) => {
-        colArr.forEach((tileVal, rowIdx) => {
-            const tileId = `c${colIdx}r${rowIdx}`
-            const tileEl = document.getElementById(tileId)
-            tileEl.innerHTML = cards[tileVal]
-        })
-    })
+    // board.forEach((colArr, colIdx) => {
+    //     colArr.forEach((tileVal, rowIdx) => {
+    //         const tileId = `c${colIdx}r${rowIdx}`
+    //         const tileEl = document.getElementById(tileId)
+    //         tileEl.innerHTML = cards[tileVal]
+    //     })
+    // })
+
+
 }
 
 function tile() {
     return Math.floor((Math.random() * 8))
-}
-
-function renderTimer() {
-    setInterval(function() {
-        if (timeSec < 0) {
-            timeMin--
-            timeSec = 59
-        } else if (timeSec <= 9) {
-            timeSec = "0" + timeSec
-        }
-        if (timerEl.innerHTML === "0:00") {
-            return
-        }
-        timerEl.innerHTML = `${timeMin}:${timeSec}`
-        timeSec--
-    }, 1000)
 }
 
 init()

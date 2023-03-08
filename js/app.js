@@ -29,10 +29,15 @@ const colors = {
 }
 
 /*----- state variables -----*/
-
+let board
+let pairs // potentially same as 'board'
+let time
+let guesses
 
 /*----- cached elements  -----*/
-
+const boardEls = [...document.querySelectorAll('#board > div')]
+const startBtn = document.getElementById('start')
+const restartBtn = document.getElementById('restart')
 
 /*----- event listeners -----*/
 

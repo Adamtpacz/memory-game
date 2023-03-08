@@ -71,4 +71,11 @@ button {
     padding: 1vmin;
 }
 
+img {
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 20%;
+    border: 1px solid red;
+}
+
 /* button:hover {} */

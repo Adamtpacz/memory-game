@@ -41,8 +41,6 @@ const counterEl = document.querySelector('#counter > p')
 const startBtn = document.getElementById('start')
 const restartBtn = document.getElementById('restart')
 
-// console.log(counterEl)
-
 /*----- event listeners -----*/
 
 
@@ -52,10 +50,11 @@ function init() {
 
     // Initial board state
     // board = [
-    //     [0, 0, 0, 0], // Column 0
-    //     [0, 0, 0, 0], // Column 1
-    //     [0, 0, 0, 0], // Column 2
-    //     [0, 0, 0, 0]  // Column 3 
+    //     [null, null, null, null], // Column 0
+    //     [null, null, null, null], // Column 0
+    //     [null, null, null, null], // Column 0
+    //     [null, null, null, null], // Column 0
+        
     // ]
 
     board = [
@@ -69,7 +68,7 @@ function init() {
     pairs = null
 
     // Allowed time in minutes and seconds
-    timeMin = 1
+    timeMin = 10
     timeSec = 0
 
     // Allowed guesses
@@ -89,17 +88,12 @@ function renderBoard() {
     console.log('Rendering board')
 
     board.forEach((colArr, colIdx) => {
-        colArr.forEach((cellVal, rowIdx) => {
-            // console.log(colIdx, rowIdx)
-
-            const randomPair = Math.floor((Math.random() * 8))
-            return cellVal = randomPair
-            // console.log(cellVal)
+        colArr.forEach((tileVal, rowIdx) => {
+            const tileId = `c${colIdx}r${rowIdx}`
+            const tileEl = document.getElementById(tileId)
+            tileEl.innerHTML = cards[tileVal]
         })
-
-        // console.log(colArr)
     })
-    // console.log(board)
 }
 
 function tile() {
@@ -111,8 +105,7 @@ function renderTimer() {
         if (timeSec < 0) {
             timeMin--
             timeSec = 59
-        }
-        if (timeSec <= 9) {
+        } else if (timeSec <= 9) {
             timeSec = "0" + timeSec
         }
         if (timerEl.innerHTML === "0:00") {

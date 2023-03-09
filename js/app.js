@@ -56,14 +56,17 @@ restartBtn.addEventListener('click', function () {
     timerEl.innerText = "10:00"
 })
 
-boardEl.addEventListener('click', function handleFirstClick(evt) {
-    console.log('First click')
-    evt.target.setAttribute('class', 'clicked')
-    console.log(evt.target)
-    if (evt.target.className === 'clicked') {
-        return
+boardEl.addEventListener('click', function handleClick(evt) {
+    if (evt.target.className !== 'clicked') {
+        console.log('Element has been clicked')
+    } else {
+        console.log('Element is clicked')
     }
+    evt.target.setAttribute('class', 'clicked')
 })
+
+// console.log(tileEls)
+
 
 // tileEls.forEach(tileEl => {
 //     tileEl.addEventListener('click', function (evt) {
@@ -95,7 +98,7 @@ function render() {
 // This utilizes the Fisher-Yates shuffle algorithm
 function shuffleBoard(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); // at random index
+        const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }

@@ -56,21 +56,13 @@ restartBtn.addEventListener('click', function () {
     timerEl.innerText = "10:00"
 })
 
-boardEl.addEventListener('click', function handleClick(evt) {
-    if (evt.target.className !== 'clicked') {
-        console.log('Element has been clicked')
-    } else {
-        console.log('Element is clicked')
-    }
-    evt.target.setAttribute('class', 'clicked')
-})
+boardEl.addEventListener('click', handleFirstClick)
 
-// console.log(tileEls)
-
-
+// Test handler for individual tiles - no event delegation
 // tileEls.forEach(tileEl => {
 //     tileEl.addEventListener('click', function (evt) {
-//         // console.log('Second click')
+//         // console.log(evt.target)
+//         evt.target.style.opacity = '1'
 //     })
 // })
 
@@ -92,10 +84,11 @@ function render() {
 
     shuffleBoard(board)
     renderBoard()
-    checkMatch()
+    // checkMatch()
+    // renderMessage()
 }
 
-// This utilizes the Fisher-Yates shuffle algorithm
+// This utilizes the Fisher-Yates shuffle algorithm - provide citation
 function shuffleBoard(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -106,7 +99,6 @@ function shuffleBoard(arr) {
 function renderBoard() {
     console.log('Rendering board')
 
-    // 1D array
     board.forEach((arr, idx) => {
         const tileId = idx
         const tileEl = document.getElementById(tileId)
@@ -114,8 +106,20 @@ function renderBoard() {
     })
 }
 
-function checkMatch() {
-
+function handleFirstClick(evt) {
+    if (evt.target.className !== 'clicked') {
+        console.log('Element has been clicked')
+        evt.target.setAttribute('class', 'clicked')
+        evt.target.style.opacity = '1'
+    } else {
+        console.log('Element is clicked')
+        evt.target.style.opacity = '0'
+        evt.target.removeAttribute('class')
+    }
 }
+
+// function renderMessage() {}
+
+// function checkMatch() {}
 
 init()

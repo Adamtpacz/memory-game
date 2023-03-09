@@ -40,13 +40,12 @@ startBtn.addEventListener('click', function () {
             timeSec = "0" + timeSec
         }
         if (timerEl.innerHTML === "0:00") {
-            return
-        }
-        if (startBtn.style.visibility === "visible") {
+            console.log('timer done')
             return
         }
         timerEl.innerHTML = `${timeMin}:${timeSec}`
         timeSec--
+        checkWin()
     }, 1000)
     startBtn.style.visibility = "hidden"
     headerEl.innerHTML = '<strong>Game on!</strong>'
@@ -75,9 +74,9 @@ function init() {
 
     board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
-    timeMin = 10
+    timeMin = 0
 
-    timeSec = 0
+    timeSec = 5
 
     render()
 }
@@ -87,7 +86,6 @@ function render() {
 
     // shuffleBoard(board)
     renderBoard()
-    checkWin()
     // checkMatch()
     // renderMessage()
 
@@ -133,7 +131,9 @@ function checkMatch() {
 }
 
 function checkWin() {
-    // if ()
+    if (timerEl.innerHTML === '0:00') {
+        headerEl.innerHTML = '<strong>You lose!</strong>'
+    }
 }
 
 // function renderMessage() {}

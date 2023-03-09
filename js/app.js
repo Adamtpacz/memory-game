@@ -27,6 +27,7 @@ const tileEls = [...document.querySelectorAll('#board > div')]
 const timerEl = document.querySelector('#timer > p')
 const startBtn = document.getElementById('start')
 const restartBtn = document.getElementById('restart')
+const headerEl = document.querySelector('header')
 
 /*----- event listeners -----*/
 
@@ -48,12 +49,14 @@ startBtn.addEventListener('click', function () {
         timeSec--
     }, 1000)
     startBtn.style.visibility = "hidden"
+    headerEl.innerHTML = '<strong>Game on!</strong>'
 })
 
 restartBtn.addEventListener('click', function () {
     init()
     startBtn.style.visibility = "visible"
     timerEl.innerText = "10:00"
+    headerEl.innerHTML = 'Memory Game'
 })
 
 boardEl.addEventListener('click', handleFirstClick)
@@ -82,10 +85,13 @@ function init() {
 function render() {
     console.log('Rendering game')
 
-    shuffleBoard(board)
+    // shuffleBoard(board)
     renderBoard()
+    checkWin()
     // checkMatch()
     // renderMessage()
+
+    // console.log(checkMatch())
 }
 
 // This utilizes the Fisher-Yates shuffle algorithm - provide citation
@@ -118,8 +124,18 @@ function handleFirstClick(evt) {
     }
 }
 
-// function renderMessage() {}
+function checkMatch() {
+    if (board[0] === board[1]) {
+        return true
+    } else {
+        return false
+    }
+}
 
-// function checkMatch() {}
+function checkWin() {
+    // if ()
+}
+
+// function renderMessage() {}
 
 init()

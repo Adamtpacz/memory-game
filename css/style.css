@@ -78,8 +78,7 @@ img {
     width: 18vmin;
     border-radius: 20%;
     /* border: 1px solid red; */
-    /* visibility: hidden; */
-    opacity: 0;
+    opacity: 1;
 }
 
 /* button:hover {} */

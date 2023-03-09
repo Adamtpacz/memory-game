@@ -38,13 +38,12 @@ h3 {
 
 /* #timer > h3 {} */
 
-/* #counter > h3 {} */
-
 /* p {} */
 
-#timer > p, #counter > p {
+#timer > p {
     padding: 1vmin;
     border: 1px solid grey;
+    height: 4vmin;
 }
 
 
@@ -77,7 +76,7 @@ img {
     height: 18vmin;
     width: 18vmin;
     border-radius: 20%;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     opacity: 1;
 }
 

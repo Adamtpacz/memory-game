@@ -12,14 +12,11 @@ const cards = {
     7: "./images/castle.png"
 }
 
-const colors = {
-    Visible: "white",
-    Hidden: "lightgreen"
-}
-
 /*----- state variables -----*/
 let board
 let time
+let selectedCards = []
+let match
 
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board')
@@ -31,34 +28,11 @@ const headerEl = document.querySelector('header')
 
 /*----- event listeners -----*/
 
-startBtn.addEventListener('click', function () {
-    setInterval(function () {
-        if (timeSec < 0) {
-            timeMin--
-            timeSec = 59
-        } else if (timeSec <= 9) {
-            timeSec = "0" + timeSec
-        }
-        if (timerEl.innerHTML === "0:00") {
-            console.log('timer done')
-            return
-        }
-        timerEl.innerHTML = `${timeMin}:${timeSec}`
-        timeSec--
-        checkWin()
-    }, 1000)
-    startBtn.style.visibility = "hidden"
-    headerEl.innerHTML = '<strong>Game on!</strong>'
-})
+startBtn.addEventListener('click', renderTimer)
 
-restartBtn.addEventListener('click', function () {
-    init()
-    startBtn.style.visibility = "visible"
-    timerEl.innerText = "10:00"
-    headerEl.innerHTML = 'Memory Game'
-})
+restartBtn.addEventListener('click', restartGame)
 
-boardEl.addEventListener('click', handleFirstClick)
+boardEl.addEventListener('click', handleClick)
 
 // Test handler for individual tiles - no event delegation
 // tileEls.forEach(tileEl => {
@@ -74,9 +48,9 @@ function init() {
 
     board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
-    timeMin = 0
+    timeMin = 1
 
-    timeSec = 5
+    timeSec = 0
 
     render()
 }
@@ -84,10 +58,9 @@ function init() {
 function render() {
     console.log('Rendering game')
 
-    // shuffleBoard(board)
+    shuffleBoard(board)
     renderBoard()
     // checkMatch()
-    // renderMessage()
 
     // console.log(checkMatch())
 }
@@ -104,30 +77,72 @@ function renderBoard() {
     console.log('Rendering board')
 
     board.forEach((arr, idx) => {
-        const tileId = idx
-        const tileEl = document.getElementById(tileId)
+        const tileEl = document.getElementById(idx)
         tileEl.innerHTML = `<img src="${cards[arr]}">`
     })
 }
 
-function handleFirstClick(evt) {
-    if (evt.target.className !== 'clicked') {
-        console.log('Element has been clicked')
-        evt.target.setAttribute('class', 'clicked')
-        evt.target.style.opacity = '1'
-    } else {
-        console.log('Element is clicked')
-        evt.target.style.opacity = '0'
-        evt.target.removeAttribute('class')
+function renderTimer() {
+    const myInterval = setInterval(function () {
+        if (timeSec < 0) {
+            timeMin--
+            timeSec = 59
+        } else if (timeSec <= 9) {
+            timeSec = "0" + timeSec
+        }
+        if (timerEl.innerHTML === "0:01") {
+            console.log('timer done')
+            clearInterval(myInterval)
+        }
+        timerEl.innerHTML = `${timeMin}:${timeSec}`
+        timeSec--
+        checkWin()
+    }, 1000)
+    startBtn.style.visibility = "hidden"
+    headerEl.innerHTML = '<strong>Game on!</strong>'
+}
+
+function restartGame() {
+    init()
+    startBtn.style.visibility = "visible"
+    timerEl.innerText = ""
+    headerEl.innerHTML = 'Memory Game'
+}
+
+function handleClick(evt) {
+    // if (evt.target.className !== 'clicked') {
+    //     console.log('Element has been clicked')
+    //     evt.target.setAttribute('class', 'clicked')
+    //     console.log(evt.target)
+    //     evt.target.style.opacity = '1'
+    // } else {
+    //     console.log('Element is clicked')
+    //     evt.target.style.opacity = '0'
+    //     evt.target.removeAttribute('class')
+    // }
+
+    selectedCards.push(evt.target)
+    console.log(selectedCards)
+    console.log(selectedCards.length)
+    if (selectedCards.length === 2) {
+        checkMatch()
     }
 }
 
 function checkMatch() {
-    if (board[0] === board[1]) {
-        return true
+    // console.log(selectedCards[0])
+    // console.log(selectedCards[1])
+    // console.log(selectedCards[0].getAttribute('src'))
+     
+    if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
+        console.log('Its a match!')
+        selectedCards = []
+        // console.log(selectedCards)
     } else {
-        return false
+        selectedCards = []
     }
+    console.log('Checked and selectedCards array reset')
+    console.log(selectedCards)
 }
 
 function checkWin() {
@@ -135,7 +150,5 @@ function checkWin() {
         headerEl.innerHTML = '<strong>You lose!</strong>'
     }
 }
-
-// function renderMessage() {}
 
 init()

@@ -19,21 +19,19 @@ const colors = {
 
 /*----- state variables -----*/
 let board
-let pairs // potentially same as 'board'
 let time
-let guesses
 
 /*----- cached elements  -----*/
-const boardEls = [...document.querySelectorAll('#board > div')]
+const boardEl = document.getElementById('board')
+const tileEls = [...document.querySelectorAll('#board > div')]
 const timerEl = document.querySelector('#timer > p')
-const counterEl = document.querySelector('#counter > p')
 const startBtn = document.getElementById('start')
 const restartBtn = document.getElementById('restart')
 
 /*----- event listeners -----*/
 
-startBtn.addEventListener('click', function() {
-    setInterval(function() {
+startBtn.addEventListener('click', function () {
+    setInterval(function () {
         if (timeSec < 0) {
             timeMin--
             timeSec = 59
@@ -52,41 +50,36 @@ startBtn.addEventListener('click', function() {
     startBtn.style.visibility = "hidden"
 })
 
-restartBtn.addEventListener('click', function() {
+restartBtn.addEventListener('click', function () {
     init()
     startBtn.style.visibility = "visible"
     timerEl.innerText = "10:00"
 })
 
+boardEl.addEventListener('click', function handleFirstClick(evt) {
+    console.log('First click')
+    evt.target.setAttribute('class', 'clicked')
+    console.log(evt.target)
+    if (evt.target.className === 'clicked') {
+        return
+    }
+})
+
+// tileEls.forEach(tileEl => {
+//     tileEl.addEventListener('click', function (evt) {
+//         // console.log('Second click')
+//     })
+// })
+
 /*----- functions -----*/
 function init() {
     console.log('Initializing game')
 
-    // Initial board state
-    board = [
-        [0, 1, 2, 3], // Column 0
-        [4, 5, 6, 7], // Column 0
-        [0, 1, 2, 3], // Column 0
-        [4, 5, 6, 7], // Column 0
-        
-    ]
+    board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
-    // board = [
-    //     [tile(), tile(), tile(), tile()], // Column 0
-    //     [tile(), tile(), tile(), tile()], // Column 1
-    //     [tile(), tile(), tile(), tile()], // Column 2
-    //     [tile(), tile(), tile(), tile()], // Column 3
-    // ]
-
-    // Randomized pairs
-    pairs = null
-
-    // Allowed time in minutes and seconds
     timeMin = 10
-    timeSec = 0
 
-    // Allowed guesses
-    guesses = 24
+    timeSec = 0
 
     render()
 }
@@ -94,23 +87,32 @@ function init() {
 function render() {
     console.log('Rendering game')
 
+    shuffleBoard(board)
     renderBoard()
+    checkMatch()
+}
+
+// This utilizes the Fisher-Yates shuffle algorithm
+function shuffleBoard(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1)); // at random index
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
 }
 
 function renderBoard() {
     console.log('Rendering board')
 
-    board.forEach((colArr, colIdx) => {
-        colArr.forEach((tileVal, rowIdx) => {
-            const tileId = `c${colIdx}r${rowIdx}`
-            const tileEl = document.getElementById(tileId)
-            tileEl.innerHTML = `<img src="${cards[tileVal]}">`
-        })
+    // 1D array
+    board.forEach((arr, idx) => {
+        const tileId = idx
+        const tileEl = document.getElementById(tileId)
+        tileEl.innerHTML = `<img src="${cards[arr]}">`
     })
 }
 
-function tile() {
-    return Math.floor((Math.random() * 8))
+function checkMatch() {
+
 }
 
 init()

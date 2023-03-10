@@ -13,7 +13,7 @@ const cards = {
 }
 
 /*----- state variables -----*/
-let board
+let board = []
 let timeMin
 let timeSec
 let selectedCards = []
@@ -55,7 +55,7 @@ function render() {
     console.log('Rendering game')
     
     shuffleBoard(board)
-    renderBoard()
+    // renderBoard()
 }
 
 // This utilizes the Fisher-Yates shuffle algorithm - provide citation
@@ -85,6 +85,10 @@ function renderTimer() {
         }
         if (timerEl.innerHTML === "0:01") {
             console.log('timer done')
+            restartBtn.style.visibility = "visible"
+            clearInterval(myInterval)
+        }
+        if (headerEl.innerHTML === "<strong>You win!</strong>") {
             restartBtn.style.visibility = "visible"
             clearInterval(myInterval)
         }
@@ -125,7 +129,9 @@ function checkMatch(evt) {
 
 function checkWin() {
     if (matchNum === 8) {
-        // clearInterval(myInterval)
+        headerEl.innerHTML = '<strong>You win!</strong>'
+        match = 0
+        console.log(match)
     } 
     if (timerEl.innerHTML === '0:00') {
         headerEl.innerHTML = '<strong>You lose!</strong>'

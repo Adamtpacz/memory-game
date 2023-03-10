@@ -100,19 +100,11 @@ function restartGame() {
     timerEl.innerText = ""
     headerEl.innerHTML = 'Memory Game'
     init()
+    renderTimer()
 }
 
 function checkMatch(evt) {
     evt.target.style.opacity = '1'
-    // if (evt.target.className !== 'clicked') {
-    //     evt.target.setAttribute('class', 'clicked')
-    // }
-    // else {
-    //     console.log('Element is clicked')
-    //     evt.target.style.opacity = '0'
-    //     evt.target.removeAttribute('class')
-    // }
-
     selectedCards.push(evt.target)
     if (selectedCards.length === 2) {
         if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
@@ -126,17 +118,6 @@ function checkMatch(evt) {
         }
     }
 }
-
-// function checkMatch() {
-//     if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
-//         console.log('Its a match!')
-//         selectedCards = []
-//         match = true
-//     } else {
-//         selectedCards = []
-//         match = false
-//     }
-// }
 
 function checkWin() {
     if (timerEl.innerHTML === '0:00') {

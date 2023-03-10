@@ -13,8 +13,9 @@ body {
 }
 
 header {
-    font-size: 32px;
+    font-size: 5vmin;
     padding: 1vmin;
+    margin: 2vmin;
 }
 
 #game {
@@ -30,6 +31,7 @@ header {
     text-align: center;
     margin: 1vmin;
     padding: 1vmin;
+    font-size: 2vmin;
 }
 
 h3 {
@@ -70,6 +72,7 @@ h3 {
 button {
     margin: 1vmin;
     padding: 1vmin;
+    font-size: 1.5vmin;
 }
 
 #restart {
@@ -81,7 +84,7 @@ img {
     width: 19vmin;
     border-radius: 20%;
     /* border: 1px solid red; */
-    opacity: 0;
+    opacity: 1;
 }
 
 /* button:hover {} */

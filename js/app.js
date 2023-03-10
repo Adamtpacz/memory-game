@@ -118,7 +118,7 @@ function checkMatch(evt) {
                 selectedCards[0].style.opacity = '0'
                 selectedCards[1].style.opacity = '0'
                 selectedCards = []
-            }, 750)
+            }, 500)
         }
     }
 }
@@ -126,7 +126,7 @@ function checkMatch(evt) {
 function checkWin() {
     if (matchNum === 8) {
         // clearInterval(myInterval)
-    }
+    } 
     if (timerEl.innerHTML === '0:00') {
         headerEl.innerHTML = '<strong>You lose!</strong>'
     }

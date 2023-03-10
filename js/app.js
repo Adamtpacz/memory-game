@@ -1,5 +1,3 @@
-console.log('Js Loaded')
-
 /*----- constants -----*/
 const cards = {
     0: "./images/wizard.png",
@@ -21,12 +19,10 @@ let matchNum
 
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board')
-const tileEls = [...document.querySelectorAll('#board > div')]
 const timerEl = document.querySelector('#timer > p')
 const startBtn = document.getElementById('start')
 const restartBtn = document.getElementById('restart')
 const headerEl = document.querySelector('header')
-
 
 /*----- event listeners -----*/
 
@@ -38,8 +34,6 @@ boardEl.addEventListener('click', checkMatch)
 
 /*----- functions -----*/
 function init() {
-    console.log('Initializing game')
-
     board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
     timeMin = 1
@@ -51,11 +45,9 @@ function init() {
     render()
 }
 
-function render() {
-    console.log('Rendering game')
-    
+function render() {    
     shuffleBoard(board)
-    // renderBoard()
+    renderBoard()
 }
 
 // This utilizes the Fisher-Yates shuffle algorithm - provide citation
@@ -66,9 +58,7 @@ function shuffleBoard(arr) {
     }
 }
 
-function renderBoard() {
-    console.log('Rendering board')
-    
+function renderBoard() {    
     board.forEach((arr, idx) => {
         const tileEl = document.getElementById(idx)
         tileEl.innerHTML = `<img src="${cards[arr]}">`
@@ -84,7 +74,6 @@ function renderTimer() {
             timeSec = "0" + timeSec
         }
         if (timerEl.innerHTML === "0:01") {
-            console.log('timer done')
             restartBtn.style.visibility = "visible"
             clearInterval(myInterval)
         }
@@ -116,7 +105,6 @@ function checkMatch(evt) {
         if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
             matchNum += 1
             selectedCards = []
-            console.log(matchNum)
         } else {
             setTimeout(() => {
                 selectedCards[0].style.opacity = '0'
@@ -131,7 +119,6 @@ function checkWin() {
     if (matchNum === 8) {
         headerEl.innerHTML = '<strong>You win!</strong>'
         match = 0
-        console.log(match)
     } 
     if (timerEl.innerHTML === '0:00') {
         headerEl.innerHTML = '<strong>You lose!</strong>'

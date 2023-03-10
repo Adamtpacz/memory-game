@@ -36,9 +36,9 @@ boardEl.addEventListener('click', checkMatch)
 function init() {
     board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
-    timeMin = 1
+    timeMin = 2
 
-    timeSec = 0
+    timeSec = 3
 
     matchNum = 0
 
@@ -73,7 +73,10 @@ function renderTimer() {
         } else if (timeSec <= 9) {
             timeSec = "0" + timeSec
         }
-        if (timerEl.innerHTML === "0:01") {
+        timerEl.innerHTML = `${timeMin}:${timeSec}`
+        timeSec--
+        checkWin()
+        if (timerEl.innerHTML === "0:00") {
             restartBtn.style.visibility = "visible"
             clearInterval(myInterval)
         }
@@ -81,9 +84,6 @@ function renderTimer() {
             restartBtn.style.visibility = "visible"
             clearInterval(myInterval)
         }
-        timerEl.innerHTML = `${timeMin}:${timeSec}`
-        timeSec--
-        checkWin()
     }, 1000)
     startBtn.style.visibility = "hidden"
     headerEl.innerHTML = '<strong>Game on!</strong>'

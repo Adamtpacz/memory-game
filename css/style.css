@@ -22,7 +22,7 @@ header {
     display: flex;
     align-items: center;
     margin: 1vmin;
-    border-radius: 5%;
+    border-radius: 5vmin;
     border: 1px solid grey;
     padding: 1vmin;
 }
@@ -34,12 +34,9 @@ header {
     font-size: 2vmin;
 }
 
-h3 {
-    padding: 1vmin;
-}
-
 #timer > p {
-    padding: 1vmin;
+    padding: 0.5vmin;
+    border-radius: 1.5vmin;
     border: 1px solid grey;
     height: 4vmin;
 }
@@ -56,7 +53,7 @@ h3 {
 }
 
 #board > div {
-    border-radius: 20%;
+    border-radius: 4vmin;
     border: 1px solid grey;
     display: flex;
     justify-content: center;
@@ -68,6 +65,7 @@ button {
     padding: 1vmin;
     font-size: 2vmin;
     font-family: 'Princess Sofia', sans-serif;
+    border-radius: 15px;
 }
 
 #restart {

@@ -10,12 +10,14 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Princess Sofia', sans-serif;
+    background-color: #31473A;
 }
 
 header {
     font-size: 5vmin;
     padding: 1vmin;
     margin: 2vmin;
+    color: #7C8363;
 }
 
 #game {
@@ -23,8 +25,10 @@ header {
     align-items: center;
     margin: 1vmin;
     border-radius: 5vmin;
-    border: 1px solid grey;
+    border: 1px solid;
     padding: 1vmin;
+    background-color: #7C8363;
+    color: #EDF4F2;
 }
 
 #timer {
@@ -37,7 +41,7 @@ header {
 #timer > p {
     padding: 0.5vmin;
     border-radius: 1.5vmin;
-    border: 1px solid grey;
+    border: 1px solid;
     height: 4vmin;
 }
 
@@ -54,7 +58,7 @@ header {
 
 #board > div {
     border-radius: 4vmin;
-    border: 1px solid grey;
+    border: 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;

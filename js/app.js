@@ -80,13 +80,13 @@ function renderTimer() {
             restartBtn.style.visibility = "visible"
             clearInterval(myInterval)
         }
-        if (headerEl.innerHTML === "<strong>You win!</strong>") {
+        if (headerEl.innerHTML === "<strong>You win! The kingdom is saved!</strong>") {
             restartBtn.style.visibility = "visible"
             clearInterval(myInterval)
         }
     }, 1000)
     startBtn.style.visibility = "hidden"
-    headerEl.innerHTML = '<strong>Game on!</strong>'
+    headerEl.innerHTML = '<strong>Match the pairs to save the kingdom!</strong>'
 }
 
 function restartGame() {
@@ -117,7 +117,7 @@ function checkMatch(evt) {
 
 function checkWin() {
     if (matchNum === 8) {
-        headerEl.innerHTML = '<strong>You win!</strong>'
+        headerEl.innerHTML = '<strong>You win! The kingdom is saved!</strong>'
         match = 0
     } 
     if (timerEl.innerHTML === '0:00') {

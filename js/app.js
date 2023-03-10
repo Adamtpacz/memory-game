@@ -43,7 +43,7 @@ function init() {
 
     timeMin = 0
 
-    timeSec = 10
+    timeSec = 3
 
     render()
 }
@@ -83,6 +83,7 @@ function renderTimer() {
         }
         if (timerEl.innerHTML === "0:01") {
             console.log('timer done')
+            restartBtn.style.visibility = "visible"
             clearInterval(myInterval)
         }
         timerEl.innerHTML = `${timeMin}:${timeSec}`
@@ -94,10 +95,11 @@ function renderTimer() {
 }
 
 function restartGame() {
-    init()
     startBtn.style.visibility = "visible"
+    restartBtn.style.visibility = "hidden"
     timerEl.innerText = ""
     headerEl.innerHTML = 'Memory Game'
+    init()
 }
 
 function checkMatch(evt) {

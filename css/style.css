@@ -26,7 +26,7 @@ header {
     padding: 1vmin;
 }
 
-#timer, #counter {
+#timer {
     text-align: center;
     margin: 1vmin;
     padding: 1vmin;
@@ -72,12 +72,16 @@ button {
     padding: 1vmin;
 }
 
+/* #restart {
+    visibility: hidden;
+} */
+
 img {
-    height: 18vmin;
-    width: 18vmin;
+    height: 19vmin;
+    width: 19vmin;
     border-radius: 20%;
-    border: 1px solid red;
-    opacity: 1;
+    /* border: 1px solid red; */
+    opacity: 0;
 }
 
 /* button:hover {} */

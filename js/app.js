@@ -14,9 +14,10 @@ const cards = {
 
 /*----- state variables -----*/
 let board
-let time
+let timeMin
+let timeSec
 let selectedCards = []
-let match
+// let match
 
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board')
@@ -32,15 +33,7 @@ startBtn.addEventListener('click', renderTimer)
 
 restartBtn.addEventListener('click', restartGame)
 
-boardEl.addEventListener('click', handleClick)
-
-// Test handler for individual tiles - no event delegation
-// tileEls.forEach(tileEl => {
-//     tileEl.addEventListener('click', function (evt) {
-//         // console.log(evt.target)
-//         evt.target.style.opacity = '1'
-//     })
-// })
+boardEl.addEventListener('click', checkMatch)
 
 /*----- functions -----*/
 function init() {
@@ -48,9 +41,9 @@ function init() {
 
     board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
-    timeMin = 1
+    timeMin = 0
 
-    timeSec = 0
+    timeSec = 10
 
     render()
 }
@@ -60,9 +53,6 @@ function render() {
 
     shuffleBoard(board)
     renderBoard()
-    // checkMatch()
-
-    // console.log(checkMatch())
 }
 
 // This utilizes the Fisher-Yates shuffle algorithm - provide citation
@@ -83,6 +73,7 @@ function renderBoard() {
 }
 
 function renderTimer() {
+
     const myInterval = setInterval(function () {
         if (timeSec < 0) {
             timeMin--
@@ -109,41 +100,41 @@ function restartGame() {
     headerEl.innerHTML = 'Memory Game'
 }
 
-function handleClick(evt) {
+function checkMatch(evt) {
+    evt.target.style.opacity = '1'
     // if (evt.target.className !== 'clicked') {
-    //     console.log('Element has been clicked')
     //     evt.target.setAttribute('class', 'clicked')
-    //     console.log(evt.target)
-    //     evt.target.style.opacity = '1'
-    // } else {
+    // }
+    // else {
     //     console.log('Element is clicked')
     //     evt.target.style.opacity = '0'
     //     evt.target.removeAttribute('class')
     // }
 
     selectedCards.push(evt.target)
-    console.log(selectedCards)
-    console.log(selectedCards.length)
     if (selectedCards.length === 2) {
-        checkMatch()
+        if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
+            selectedCards = []
+        } else {
+            setTimeout(() => {
+                selectedCards[0].style.opacity = '0'
+                selectedCards[1].style.opacity = '0'
+                selectedCards = []
+            }, 1000)
+        }
     }
 }
 
-function checkMatch() {
-    // console.log(selectedCards[0])
-    // console.log(selectedCards[1])
-    // console.log(selectedCards[0].getAttribute('src'))
-     
-    if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
-        console.log('Its a match!')
-        selectedCards = []
-        // console.log(selectedCards)
-    } else {
-        selectedCards = []
-    }
-    console.log('Checked and selectedCards array reset')
-    console.log(selectedCards)
-}
+// function checkMatch() {
+//     if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
+//         console.log('Its a match!')
+//         selectedCards = []
+//         match = true
+//     } else {
+//         selectedCards = []
+//         match = false
+//     }
+// }
 
 function checkWin() {
     if (timerEl.innerHTML === '0:00') {

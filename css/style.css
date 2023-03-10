@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    /* border: 1px solid red; */
 }
 
 body {
@@ -38,10 +37,6 @@ h3 {
     padding: 1vmin;
 }
 
-/* #timer > h3 {} */
-
-/* p {} */
-
 #timer > p {
     padding: 1vmin;
     border: 1px solid grey;
@@ -67,8 +62,6 @@ h3 {
     align-items: center;
 }
 
-/* #buttons {} */
-
 button {
     margin: 1vmin;
     padding: 1vmin;
@@ -83,8 +76,5 @@ img {
     height: 19vmin;
     width: 19vmin;
     border-radius: 20%;
-    /* border: 1px solid red; */
     opacity: 0;
 }
-
-/* button:hover {} */

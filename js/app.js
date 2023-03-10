@@ -17,7 +17,7 @@ let board
 let timeMin
 let timeSec
 let selectedCards = []
-// let match
+let matchNum
 
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board')
@@ -26,6 +26,7 @@ const timerEl = document.querySelector('#timer > p')
 const startBtn = document.getElementById('start')
 const restartBtn = document.getElementById('restart')
 const headerEl = document.querySelector('header')
+
 
 /*----- event listeners -----*/
 
@@ -41,16 +42,18 @@ function init() {
 
     board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
-    timeMin = 0
+    timeMin = 1
 
-    timeSec = 3
+    timeSec = 0
+
+    matchNum = 0
 
     render()
 }
 
 function render() {
     console.log('Rendering game')
-
+    
     shuffleBoard(board)
     renderBoard()
 }
@@ -65,7 +68,7 @@ function shuffleBoard(arr) {
 
 function renderBoard() {
     console.log('Rendering board')
-
+    
     board.forEach((arr, idx) => {
         const tileEl = document.getElementById(idx)
         tileEl.innerHTML = `<img src="${cards[arr]}">`
@@ -73,8 +76,7 @@ function renderBoard() {
 }
 
 function renderTimer() {
-
-    const myInterval = setInterval(function () {
+    const myInterval = setInterval(function() {
         if (timeSec < 0) {
             timeMin--
             timeSec = 59
@@ -108,18 +110,23 @@ function checkMatch(evt) {
     selectedCards.push(evt.target)
     if (selectedCards.length === 2) {
         if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
+            matchNum += 1
             selectedCards = []
+            console.log(matchNum)
         } else {
             setTimeout(() => {
                 selectedCards[0].style.opacity = '0'
                 selectedCards[1].style.opacity = '0'
                 selectedCards = []
-            }, 1000)
+            }, 750)
         }
     }
 }
 
 function checkWin() {
+    if (matchNum === 8) {
+        // clearInterval(myInterval)
+    }
     if (timerEl.innerHTML === '0:00') {
         headerEl.innerHTML = '<strong>You lose!</strong>'
     }

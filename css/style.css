@@ -84,7 +84,7 @@ img {
     width: 19vmin;
     border-radius: 20%;
     /* border: 1px solid red; */
-    opacity: 1;
+    opacity: 0;
 }
 
 /* button:hover {} */

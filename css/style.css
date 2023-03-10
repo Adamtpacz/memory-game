@@ -25,7 +25,6 @@ header {
     align-items: center;
     margin: 1vmin;
     border-radius: 5vmin;
-    border: 1px solid;
     padding: 1vmin;
     background-color: #7C8363;
     color: #EDF4F2;
@@ -38,11 +37,16 @@ header {
     font-size: 2vmin;
 }
 
-#timer > p {
+h3 {
+    font-size: 3.5vmin;
+}
+
+p {
     padding: 0.5vmin;
     border-radius: 1.5vmin;
-    border: 1px solid;
-    height: 4vmin;
+    border: 2px solid;
+    height: 6vmin;
+    font-size: 3vmin;
 }
 
 
@@ -62,14 +66,18 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #EDF4F2;
 }
 
 button {
     margin: 1vmin;
     padding: 1vmin;
-    font-size: 2vmin;
+    font-size: 3vmin;
     font-family: 'Princess Sofia', sans-serif;
-    border-radius: 15px;
+    border-radius: 2vmin;
+    background-color: #EDF4F2;
+    border: 3px solid #31473A;
+    color: #31473A;
 }
 
 #restart {

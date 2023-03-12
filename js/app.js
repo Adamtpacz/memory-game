@@ -98,25 +98,27 @@ function restartGame() {
 }
 
 function checkMatch(evt) {
-    if (evt.target.tagName === 'IMG') {
-        if (evt.target.className !== "clicked") {
-            evt.target.classList = "clicked"
-            console.log(evt.target.tagName)
-            evt.target.style.opacity = '1'
-            selectedCards.push(evt.target)
-            if (selectedCards.length === 2) {
-                if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
-                    matchNum += 1
-                    selectedCards = []
-                    console.log(matchNum)
-                } else {
-                    setTimeout(() => {
-                        selectedCards[0].style.opacity = '0'
-                        selectedCards[1].style.opacity = '0'
-                        selectedCards[0].classList.remove('clicked')
-                        selectedCards[1].classList.remove('clicked')
+    if (timerEl.innerHTML !== "") {
+        if (evt.target.tagName === 'IMG') {
+            if (evt.target.className !== "clicked") {
+                evt.target.classList = "clicked"
+                console.log(evt.target.tagName)
+                evt.target.style.opacity = '1'
+                selectedCards.push(evt.target)
+                if (selectedCards.length === 2) {
+                    if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
+                        matchNum += 1
                         selectedCards = []
-                    }, 500)
+                        console.log(matchNum)
+                    } else {
+                        setTimeout(() => {
+                            selectedCards[0].style.opacity = '0'
+                            selectedCards[1].style.opacity = '0'
+                            selectedCards[0].classList.remove('clicked')
+                            selectedCards[1].classList.remove('clicked')
+                            selectedCards = []
+                        }, 500)
+                    }
                 }
             }
         }

@@ -130,7 +130,6 @@ function checkMatch(evt) {
 function checkWin() {
     if (matchNum === 8) {
         headerEl.innerHTML = '<strong>You win! The kingdom is saved!</strong>'
-        match = 0
     }
     if (timerEl.innerHTML === '0:00') {
         headerEl.innerHTML = '<strong>You lose!</strong>'

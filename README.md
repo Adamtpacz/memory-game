@@ -3,7 +3,7 @@
 - The High Fantasy Memory Game is a riff off the classic memory game - Concentration! Pair up the 8 fantasy themed cards before the time runs out!
 
 ## Preview
-![image](https://imgur.com/a/mt2nyRd)
+![image](./images/memory_game.png)
 
 ## Technologies Used
 - HTML
@@ -27,4 +27,4 @@
   - Responsive design for mobile devices
   - Scoreboard for fastest time
   - Animations for tiles
-  - Audio that plays when you win/lose 
+  - Audio that plays when you win/lose

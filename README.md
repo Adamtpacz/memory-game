@@ -1,6 +1,6 @@
 # The Fairy Tale Memory Game
 ## Description
-- The High Fantasy Memory Game is a riff off the classic memory game - Concentration! Pair up the 8 fantasy themed cards before the time runs out!
+- The Fairy Tale Memory Game is a riff off the classic memory game - Concentration! Pair up the 8 fantasy themed cards before the time runs out!
 
 ## Preview
 ![image](./images/memory_game.png)

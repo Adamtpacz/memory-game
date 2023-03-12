@@ -35,9 +35,9 @@ boardEl.addEventListener('click', checkMatch)
 function init() {
     board = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 
-    timeMin = 1
+    timeMin = 0
 
-    timeSec = 0
+    timeSec = 3
 
     matchNum = 0
 
@@ -98,18 +98,16 @@ function restartGame() {
 }
 
 function checkMatch(evt) {
-    if (timerEl.innerHTML !== "") {
+    if (headerEl.innerHTML === "<strong>Match the pairs to save the kingdom!</strong>") {
         if (evt.target.tagName === 'IMG') {
             if (evt.target.className !== "clicked") {
                 evt.target.classList = "clicked"
-                console.log(evt.target.tagName)
                 evt.target.style.opacity = '1'
                 selectedCards.push(evt.target)
                 if (selectedCards.length === 2) {
                     if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
                         matchNum += 1
                         selectedCards = []
-                        console.log(matchNum)
                     } else {
                         setTimeout(() => {
                             selectedCards[0].style.opacity = '0'

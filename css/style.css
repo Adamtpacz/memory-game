@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    /* border: 1px solid red; */
 }
 
 body {
@@ -25,7 +26,7 @@ header {
     align-items: center;
     margin: 1vmin;
     border-radius: 5vmin;
-    padding: 1vmin;
+    padding: 1.5vmin;
     background-color: #7C8363;
     color: #EDF4F2;
 }
@@ -85,8 +86,8 @@ button {
 }
 
 img {
-    height: 19vmin;
-    width: 19vmin;
+    height: 19.1vmin;
+    width: 19.1vmin;
     border-radius: 20%;
     opacity: 0;
 }

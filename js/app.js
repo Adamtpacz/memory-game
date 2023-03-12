@@ -25,7 +25,6 @@ const restartBtn = document.getElementById('restart')
 const headerEl = document.querySelector('header')
 
 /*----- event listeners -----*/
-
 startBtn.addEventListener('click', renderTimer)
 
 restartBtn.addEventListener('click', restartGame)
@@ -45,7 +44,7 @@ function init() {
     render()
 }
 
-function render() {    
+function render() {
     shuffleBoard(board)
     renderBoard()
 }
@@ -58,7 +57,7 @@ function shuffleBoard(arr) {
     }
 }
 
-function renderBoard() {    
+function renderBoard() {
     board.forEach((arr, idx) => {
         const tileEl = document.getElementById(idx)
         tileEl.innerHTML = `<img src="${cards[arr]}">`
@@ -66,7 +65,7 @@ function renderBoard() {
 }
 
 function renderTimer() {
-    const myInterval = setInterval(function() {
+    const myInterval = setInterval(function () {
         if (timeSec < 0) {
             timeMin--
             timeSec = 59
@@ -99,18 +98,25 @@ function restartGame() {
 }
 
 function checkMatch(evt) {
-    evt.target.style.opacity = '1'
-    selectedCards.push(evt.target)
-    if (selectedCards.length === 2) {
-        if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
-            matchNum += 1
-            selectedCards = []
-        } else {
-            setTimeout(() => {
-                selectedCards[0].style.opacity = '0'
-                selectedCards[1].style.opacity = '0'
+    if (evt.target.className !== "clicked") {
+        evt.target.classList = "clicked"
+        console.log(evt.target)
+        evt.target.style.opacity = '1'
+        selectedCards.push(evt.target)
+        if (selectedCards.length === 2) {
+            if (selectedCards[0].getAttribute('src') === selectedCards[1].getAttribute('src')) {
+                matchNum += 1
                 selectedCards = []
-            }, 500)
+                console.log(matchNum)
+            } else {
+                setTimeout(() => {
+                    selectedCards[0].style.opacity = '0'
+                    selectedCards[1].style.opacity = '0'
+                    selectedCards[0].classList.remove('clicked')
+                    selectedCards[1].classList.remove('clicked')
+                    selectedCards = []
+                }, 500)
+            }
         }
     }
 }
@@ -119,7 +125,7 @@ function checkWin() {
     if (matchNum === 8) {
         headerEl.innerHTML = '<strong>You win! The kingdom is saved!</strong>'
         match = 0
-    } 
+    }
     if (timerEl.innerHTML === '0:00') {
         headerEl.innerHTML = '<strong>You lose!</strong>'
     }

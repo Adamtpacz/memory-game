@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    /* border: 1px solid red; */
 }
 
 body {
@@ -11,14 +10,14 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Princess Sofia', sans-serif;
-    background-color: #31473A;
+    background-color: #7C8363;
 }
 
 header {
     font-size: 5vmin;
     padding: 1vmin;
     margin: 2vmin;
-    color: #7C8363;
+    color: #EDF4F2;
 }
 
 #game {
@@ -27,8 +26,8 @@ header {
     margin: 1vmin;
     border-radius: 5vmin;
     padding: 1.5vmin;
-    background-color: #7C8363;
-    color: #EDF4F2;
+    background-color: #31473A;
+    color: #949b7b;
 }
 
 #timer {
@@ -45,9 +44,11 @@ h3 {
 p {
     padding: 0.5vmin;
     border-radius: 1.5vmin;
-    border: 2px solid;
+    border: 4px solid #949b7b;
     height: 6vmin;
     font-size: 3vmin;
+    background-color: #EDF4F2;
+    color: #31473A;
 }
 
 
@@ -76,8 +77,13 @@ button {
     font-size: 3vmin;
     font-family: 'Princess Sofia', sans-serif;
     border-radius: 2vmin;
+    background-color: #31473A;
+    border: 4px solid #949b7b;
+    color: #949b7b;
+}
+
+button:hover {
     background-color: #EDF4F2;
-    border: 3px solid #31473A;
     color: #31473A;
 }
 

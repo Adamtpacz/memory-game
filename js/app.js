@@ -49,7 +49,11 @@ function render() {
     renderBoard()
 }
 
-// This utilizes the Fisher-Yates shuffle algorithm - provide citation
+// Title: Fisher-Yates Shuffle Algorithm
+// Author: rohitsingh07052, geeksforgeeks.org
+// Date: 19 Dec, 2022
+// Code Verison: N/A
+// Availability: https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
 function shuffleBoard(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
